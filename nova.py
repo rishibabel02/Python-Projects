@@ -10,9 +10,9 @@ import json
 import requests
 import random
 import platform
-# import socket 
-# import psutil
-# import pyautogui
+import socket 
+import psutil
+import pyautogui
 
 # from forex_python.converter import CurrecnyRates
 engine = pyttsx3.init('sapi5')  #sapi5 is used to take windows inbuilt voice via an api.
@@ -134,24 +134,24 @@ def games():
     speak("Which Game do you want to play")
     choice = takecommand().lower()
 
-    # if 'tac' in choice or 'tic' in choice or 'toe' in choice:
-    #     import tic_tac
+    if 'tac' in choice or 'tic' in choice or 'toe' in choice:
+        import tic_tac
 
-    # elif 'stone' in choice or 'paper' in choice or'scissor' in choice:
-    #     import stone_paper_scissor
+    elif 'stone' in choice or 'paper' in choice or'scissor' in choice:
+        import stone_paper_scissor
 
-    # elif 'name' in choice:
-    #     import guess
+    elif 'name' in choice:
+        import guess
 
-    # elif 'encode' in choice or 'decode' in choice:
-    #     import encode_decode
+    elif 'encode' in choice or 'decode' in choice:
+        import encode_decode
     
-    # elif 'secret' in choice or 'auction' in choice:
-    #     import secret_auction
+    elif 'secret' in choice or 'auction' in choice:
+        import secret_auction
        
-    # else:
-    #     print("Invalid choice.")
-    #     speak("Invalid choice.")
+    else:
+        print("Invalid choice.")
+        speak("Invalid choice.")
 
 def dice():
     while(True):
@@ -166,55 +166,55 @@ def dice():
             break
     
 
-#battery percentage
-# def get_battery_percentage():
-#     battery = psutil.sensors_battery()
-#     percent = battery.percent
-#     return percent
-# def speak(text):
-#     engine = pyttsx3.init()
-#     engine.say(text)
-#     engine.runAndWait()
+# battery percentage
+def get_battery_percentage():
+    battery = psutil.sensors_battery()
+    percent = battery.percent
+    return percent
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 
 #translator 
-# from googletrans import Translator
-# def translate_text(text, dest_language='hi'):
-#     translator = Translator()
-#     translated_text = translator.translate(text, dest=dest_language)
-#     return translated_text.text
-# def speak(text):
-#     engine = pyttsx3.init()
-#     engine.say(text)
-#     engine.runAndWait()
+from googletrans import Translator
+def translate_text(text, dest_language='hi'):
+    translator = Translator()
+    translated_text = translator.translate(text, dest=dest_language)
+    return translated_text.text
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 
 
 # #conversion of dollars to rupees
-# def convert_usd_to_inr(amount, exchange_rate=83.30):
-#     converted_amount = amount * exchange_rate
-#     return converted_amount
+def convert_usd_to_inr(amount, exchange_rate=83.30):
+    converted_amount = amount * exchange_rate
+    return converted_amount
 
-# # def speak(text):
-# #     engine = pyttsx3.init()
-# #     engine.say(text)
-# #     engine.runAndWait()
-
-
-# #screenshot
-# def take_screenshot():
-#     # Capture the screen and save the screenshot
-#     timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-#     screenshot_path = r"C:\Users\teesh\OneDrive\Pictures\Screenshots"
-#     screenshot_name = f"screenshot_{timestamp}.png"
-#     pyautogui.screenshot(screenshot_name)
-#     print(f"Screenshot saved as {screenshot_name} in your library.")
+def speak(text):
+    engine = pyttsx3.init()
+    engine.say(text)
+    engine.runAndWait()
 
 
-# def increase_volume():
-#     pyautogui.press('volumeup')
-#     speak("Volume increased")
+#screenshot
+def take_screenshot():
+    # Capture the screen and save the screenshot
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+    screenshot_path = r"C:\Users\teesh\OneDrive\Pictures\Screenshots"
+    screenshot_name = f"screenshot_{timestamp}.png"
+    pyautogui.screenshot(screenshot_name)
+    print(f"Screenshot saved as {screenshot_name} in your library.")
 
-# def decrease_volume():
-#     pyautogui.press('volumedown')
+
+def increase_volume():
+    pyautogui.press('volumeup')
+    speak("Volume increased")
+
+def decrease_volume():
+    pyautogui.press('volumedown')
     speak("Volume decreased")
 
 
@@ -297,37 +297,37 @@ if __name__ =='__main__':
         dice()
 
 
-    # elif 'battery' in query:
-    #     battery_percent = get_battery_percentage()
-    #     speak(f"Your current battery percentage is {battery_percent} percent.")
+    elif 'battery' in query:
+        battery_percent = get_battery_percentage()
+        speak(f"Your current battery percentage is {battery_percent} percent.")
 
-    # elif 'translate' in query:
-    #     speak("Please say the English text to translate to Hindi.")
-    #     text_to_translate = takecommand()
-    #     if text_to_translate:
-    #         translated_text = translate_text(text_to_translate)
-    #         print(f"The translated text in Hindi is: {translated_text}")
-    #         speak(f"The translated text in Hindi is: {translated_text}")
+    elif 'translate' in query:
+        speak("Please say the English text to translate to Hindi.")
+        text_to_translate = takecommand()
+        if text_to_translate:
+            translated_text = translate_text(text_to_translate)
+            print(f"The translated text in Hindi is: {translated_text}")
+            speak(f"The translated text in Hindi is: {translated_text}")
 
-    # elif 'convert' in query:
-    #         speak("Please write amount in USD")
-    #         amount_text = float(input("Amount= "))
-    #         if amount_text:
-    #             try:
-    #                 converted_amount = convert_usd_to_inr(amount_text)
-    #                 speak(f"{amount_text} US dollars is equal to {converted_amount:.2f} Indian rupees.")
-    #             except ValueError:
-    #                 print("Please enter a valid amount.")
+    elif 'convert' in query:
+            speak("Please write amount in USD")
+            amount_text = float(input("Amount= "))
+            if amount_text:
+                try:
+                    converted_amount = convert_usd_to_inr(amount_text)
+                    speak(f"{amount_text} US dollars is equal to {converted_amount:.2f} Indian rupees.")
+                except ValueError:
+                    print("Please enter a valid amount.")
             
-    # elif 'screenshot' in query:
-    #     input("Press Enter to take a screenshot...")
-    #     take_screenshot()
+    elif 'screenshot' in query:
+        input("Press Enter to take a screenshot...")
+        take_screenshot()
 
 
-    # elif 'increase volume' in query:
-    #         increase_volume()
-    # elif 'decrease volume' in query:
-    #         decrease_volume()
+    elif 'increase volume' in query:
+            increase_volume()
+    elif 'decrease volume' in query:
+            decrease_volume()
 
     elif 'stop' in query:
         exit()
